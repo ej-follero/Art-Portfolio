@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    background-color: #fafafa;
+  }
+  
+  html.dark {
+    background-color: #0c0c1d;
+  }
+  
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply text-gray-900 dark:text-gray-100;
+    background-color: #fafafa;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark {
+    background-color: #0c0c1d;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #fafafa;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.06) 1px,
+        rgba(0, 0, 0, 0.06) 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.06) 1px,
+        rgba(0, 0, 0, 0.06) 2px
+      ),
+      radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.15) 1px, transparent 0);
+    background-size: 2px 2px, 2px 2px, 3px 3px;
+    background-attachment: fixed;
+    transition: background-color 0.3s ease, background-image 0.3s ease;
+  }
+
+  body.dark::before {
+    background-color: #0c0c1d;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.03) 1px,
+        rgba(255, 255, 255, 0.03) 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.03) 1px,
+        rgba(255, 255, 255, 0.03) 2px
+      ),
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  }
+  
+  a {
+    @apply no-underline text-inherit;
+  }
+}
+
+@layer utilities {
+  .gallery-frame {
+    @apply bg-white dark:bg-gray-800 p-4 shadow-lg;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-frame.dark {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .gallery-shadow {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .gallery-shadow.dark {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+}
